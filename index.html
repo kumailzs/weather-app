@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Nav Bar -->
+  <nav id="navbar">
+    <img width="180" src="assets/images/logo.svg" alt="">
+    <select name="switch id="switch">
+      <option value="Celsius" selected>Celsius (C)</option>
+      <option value="Fahrenheit">Fahrenheit (F)</option>
+    </select>
+  </nav>
+
+  <!-- Hero Sectiion -->
+  <section id="hero">
+    <h1>How's the sky looking today?</h1>
+     <div id="inpt_sec">
+      <input type="text" name="text" id="input" list="suggestions">
+      <datalist id="suggestions">
+      <option value="Black">Black</option>
+      <option value="Red"></option>
+      <option value="Green"></option>
+      <option value="Blue"></option>
+      <option value="White"></option>
+      </datalist>
+    <button id="btn">Search</button>
+  </div>
+  </section>
+
+  <!-- Main Section -->
+  <main id="main">
+
+    <!-- Left Side -->
+    <div class="left">
+
+      <!-- Today Temperature Info -->
+      <div class="status">
+        <div class="info"></div>
+        <div id="load">
+          <img src="" alt="">
+          <h4>Loading...</h4>
+        </div>
+      </div>
+
+      <!-- Extra Weather Info -->
+      <div class="extra">
+        <div class="extra_info">
+          <h5>Feels Like</h5>
+          <h3 id="feel">__</h3>
+        </div>
+        <div class="extra_info">
+          <h5>Humidity</h5>
+          <h3 id="humidity">__</h3>
+        </div>
+        <div class="extra_info">
+          <h5>Wind</h5>
+          <h3 id="wind">__</h3>
+        </div>
+        <div class="extra_info">
+          <h5>Percipation</h5>
+          <h3 id="percipation">__</h3>
+        </div>
+      </div>
+
+      <!-- 7 Days Forecast -->
+      <div class="forecast">
+        <h4>Daily Forecast</h4>
+        
+        <div class="forecast_days">
+          
+          <div class="day">
+            <h6>Tue</h6>
+            <img width="50" src="assets/images/icon-fog.webp" alt="">
+            <div class="min_max">
+              <h6>20</h6>
+              <h6>16</h6>
+            </div>
+          </div>
+          <div class="day">
+            <h6>Tue</h6>
+            <img width="50" src="assets/images/icon-fog.webp" alt="">
+            <div class="min_max">
+              <h6>20</h6>
+              <h6>16</h6>
+            </div>
+          </div>
+          <div class="day">
+            <h6>Tue</h6>
+            <img width="50" src="assets/images/icon-fog.webp" alt="">
+            <div class="min_max">
+              <h6>20</h6>
+              <h6>16</h6>
+            </div>
+          </div>
+          <div class="day">
+            <h6>Tue</h6>
+            <img width="50" src="assets/images/icon-fog.webp" alt="">
+            <div class="min_max">
+              <h6>20</h6>
+              <h6>16</h6>
+            </div>
+          </div>
+          <div class="day">
+            <h6>Tue</h6>
+            <img width="50" src="assets/images/icon-fog.webp" alt="">
+            <div class="min_max">
+              <h6>20</h6>
+              <h6>16</h6>
+            </div>
+          </div>
+          <div class="day">
+            <h6>Tue</h6>
+            <img width="50" src="assets/images/icon-fog.webp" alt="">
+            <div class="min_max">
+              <h6>20</h6>
+              <h6>16</h6>
+            </div>
+          </div>
+          <div class="day">
+            <h6>Tue</h6>
+            <img width="50" src="assets/images/icon-fog.webp" alt="">
+            <div class="min_max">
+              <h6>20</h6>
+              <h6>16</h6>
+            </div>
+          </div>
+        
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Right Side -->
+    <div class="right"></div>
+  </main>
+
+   <script src="script.js"></script>
+  </body>
+</html>
+
+
