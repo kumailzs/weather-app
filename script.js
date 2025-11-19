@@ -54,10 +54,10 @@ async function weather(city) {
     let p = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     );
-    let res = await p.json();
+    let resp = await p.json();
     let {
       results: [{ latitude: lat, longitude: log, name, country }],
-    } = res;
+    } = resp;
     let response = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${log}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,wind_speed_10m&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto&hourly=weathercode
 &daily=weathercode`
@@ -65,7 +65,7 @@ async function weather(city) {
     let data = await response.json();
     up_display(data, name, country);
   } catch (e) {
-    if (e.message.includes("Cannot read properties of undefined")) {
+    if (e.message.includes("Cannot read properties of undefined") || e.message.includes("Cannot destructure property 'Symbol(Symbol.iterator)")) {
       console.log("No Found");
     } else {
       console.log("Fetch Api Failed");
