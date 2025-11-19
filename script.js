@@ -35,7 +35,18 @@ let max_d4 = document.getElementById("max_d4");
 let max_d5 = document.getElementById("max_d5");
 let max_d6 = document.getElementById("max_d6");
 let max_d7 = document.getElementById("max_d7");
+
+let im_1=document.getElementById("im_1")
+let im_2=document.getElementById("im_2")
+let im_3=document.getElementById("im_3")
+let im_4=document.getElementById("im_4")
+let im_5=document.getElementById("im_5")
+let im_6=document.getElementById("im_6")
+let im_7=document.getElementById("im_7")
+
 let onetime = 0;
+
+
 
 // Weather Data Fetch
 async function weather(city) {
@@ -48,7 +59,8 @@ async function weather(city) {
       results: [{ latitude: lat, longitude: log, name, country }],
     } = res;
     let response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${log}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,wind_speed_10m&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto`
+      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${log}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,wind_speed_10m&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto&hourly=weathercode
+&daily=weathercode`
     );
     let data = await response.json();
     up_display(data, name, country);
@@ -115,9 +127,27 @@ function date_to_day(v1, v2, v3, v4, v5, v6, v7) {
   t7 = new Date(v7).toLocaleDateString("en-US", { weekday: "short" });
 }
 
+function forecast_img(value){
+
+ if (value < 2) {
+    return "assets/images/icon-sunny.webp";
+} else if (value < 3) {
+    return "assets/images/icon-partly-cloudy.webp";
+} else if (value < 5) {
+    return "assets/images/icon-overcast.webp";
+} else if (value < 66) {
+    return "assets/images/icon-rain.webp";
+} else if (value < 76) {
+    return "assets/images/icon-snow.webp";
+} else if (value < 100) {
+    return "assets/images/icon-storm.webp";
+} else {
+    
+}
+}
 function forecast_dis(data) {
   let {
-    daily: { time, temperature_2m_min: tem },
+    daily: { time, temperature_2m_min: tem, weathercode:code },
   } = data;
 
   // Days of Forecast
@@ -153,6 +183,18 @@ function forecast_dis(data) {
   max_d5.textContent = md5;
   max_d6.textContent = md6;
   max_d7.textContent = md7;
+
+let [c1,c2,c3,c4,c5,c6,c7]=code;
+let arr =[c1,c2,c3,c4,c5,c6,c7];
+let modify = arr.map((n)=> forecast_img(n));
+let [img1,img2,img3,img4,img5,img6,img7]=modify;
+im_1.src=img1
+im_2.src=img2
+im_3.src=img3
+im_4.src=img4
+im_5.src=img5
+im_6.src=img6
+im_7.src=img7
 }
 
 // Display Update Function
