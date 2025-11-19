@@ -10,7 +10,7 @@ let load = document.getElementById("load");
 let inp = document.getElementById("input");
 let btn = document.getElementById("btn");
 
-let [t1, t2, t3, t4, t5, t6, t7] = "";
+// let [t1, t2, t3, t4, t5, t6, t7] = "";
 
 let day_1 = document.getElementById("day_1");
 let day_2 = document.getElementById("day_2");
@@ -83,6 +83,9 @@ function one_time() {
   onetime = 1;
 }
 
+function date_to_day(v) {
+  return new Date(v).toLocaleDateString("en-US", { weekday: "short" });
+}
 // Current Weather Display
 function curr_weather_dis(data, name, country) {
   let city_name = document.getElementById("city");
@@ -107,25 +110,16 @@ function curr_weather_dis(data, name, country) {
       wind_speed_10m: win_u,
     },
   } = data;
-  curr_temp.textContent = temp + temp_u;
-  feel.textContent = feellike + feellike_u;
+  curr_temp.textContent = Math.floor(temp) + temp_u;
+  feel.textContent = Math.floor(feellike) + feellike_u;
   humidity.textContent = humi + humi_u;
   wind.textContent = win + win_u;
   pret.textContent = prec + prec_u;
   city_name.textContent = `${name}, ${country}`;
-  curr_day.textContent = time;
+  curr_day.textContent = `${date_to_day(time.split("T")[0])}, ${time.split("T")[0]}`
 }
 
-// Function that convert date into day
-function date_to_day(v1, v2, v3, v4, v5, v6, v7) {
-  t1 = new Date(v1).toLocaleDateString("en-US", { weekday: "short" });
-  t2 = new Date(v2).toLocaleDateString("en-US", { weekday: "short" });
-  t3 = new Date(v3).toLocaleDateString("en-US", { weekday: "short" });
-  t4 = new Date(v4).toLocaleDateString("en-US", { weekday: "short" });
-  t5 = new Date(v5).toLocaleDateString("en-US", { weekday: "short" });
-  t6 = new Date(v6).toLocaleDateString("en-US", { weekday: "short" });
-  t7 = new Date(v7).toLocaleDateString("en-US", { weekday: "short" });
-}
+
 
 function forecast_img(value){
 
@@ -151,8 +145,9 @@ function forecast_dis(data) {
   } = data;
 
   // Days of Forecast
-  let [time_1, time_2, time_3, time_4, time_5, time_6, time_7] = time;
-  date_to_day(time_1, time_2, time_3, time_4, time_5, time_6, time_7);
+  let[time_1,time_2,time_3,time_4,time_5,time_6,time_7]=time;
+  let ar =[time_1,time_2,time_3,time_4,time_5,time_6,time_7].map((n)=>date_to_day(n));
+  let [t1, t2, t3, t4, t5, t6, t7] = ar;
   day_1.textContent=t1;
   day_2.textContent=t2;
   day_3.textContent=t3;
@@ -163,38 +158,38 @@ function forecast_dis(data) {
   // Minimum temperature
   let [d1, d2, d3, d4, d5, d6, d7] = tem;
 
-  min_d1.textContent = d1;
-  min_d2.textContent = d2;
-  min_d3.textContent = d3;
-  min_d4.textContent = d4;
-  min_d5.textContent = d5;
-  min_d6.textContent = d6;
-  min_d7.textContent = d7;
+  min_d1.textContent = Math.floor(d1);
+  min_d2.textContent = Math.floor(d2);
+  min_d3.textContent = Math.floor(d3);
+  min_d4.textContent = Math.floor(d4);
+  min_d5.textContent = Math.floor(d5);
+  min_d6.textContent = Math.floor(d6);
+  min_d7.textContent = Math.floor(d7);
 
   // Maximum temperature
   let {
     daily: { temperature_2m_max: mtem },
   } = data;
   let [md1, md2, md3, md4, md5, md6, md7] = mtem;
-  max_d1.textContent = md1;
-  max_d2.textContent = md2;
-  max_d3.textContent = md3;
-  max_d4.textContent = md4;
-  max_d5.textContent = md5;
-  max_d6.textContent = md6;
-  max_d7.textContent = md7;
+  max_d1.textContent = Math.floor(md1);
+  max_d2.textContent = Math.floor(md2);
+  max_d3.textContent = Math.floor(md3);
+  max_d4.textContent = Math.floor(md4);
+  max_d5.textContent = Math.floor(md5);
+  max_d6.textContent = Math.floor(md6);
+  max_d7.textContent = Math.floor(md7);
 
 let [c1,c2,c3,c4,c5,c6,c7]=code;
-let arr =[c1,c2,c3,c4,c5,c6,c7];
-let modify = arr.map((n)=> forecast_img(n));
-let [img1,img2,img3,img4,img5,img6,img7]=modify;
-im_1.src=img1
-im_2.src=img2
-im_3.src=img3
-im_4.src=img4
-im_5.src=img5
-im_6.src=img6
-im_7.src=img7
+let arr =[c1,c2,c3,c4,c5,c6,c7].map((n)=> forecast_img(n));
+let [img1,img2,img3,img4,img5,img6,img7]=arr;
+im_1.src=img1;
+im_2.src=img2;
+im_3.src=img3;
+im_4.src=img4;
+im_5.src=img5;
+im_6.src=img6;
+im_7.src=img7;
+
 }
 
 // Display Update Function
