@@ -10,7 +10,6 @@ let load = document.getElementById("load");
 let inp = document.getElementById("input");
 let btn = document.getElementById("btn");
 
-// let [t1, t2, t3, t4, t5, t6, t7] = "";
 
 let day_1 = document.getElementById("day_1");
 let day_2 = document.getElementById("day_2");
@@ -35,6 +34,25 @@ let max_d4 = document.getElementById("max_d4");
 let max_d5 = document.getElementById("max_d5");
 let max_d6 = document.getElementById("max_d6");
 let max_d7 = document.getElementById("max_d7");
+
+let hr1 = document.getElementById("hr1");
+let hr2 = document.getElementById("hr2");
+let hr3 = document.getElementById("hr3");
+let hr4 = document.getElementById("hr4");
+let hr5 = document.getElementById("hr5");
+let hr6 = document.getElementById("hr6");
+let hr7 = document.getElementById("hr7");
+let hr8 = document.getElementById("hr8");
+
+let time_1 = document.getElementById("time_1");
+let time_2 = document.getElementById("time_2");
+let time_3 = document.getElementById("time_3");
+let time_4 = document.getElementById("time_4");
+let time_5 = document.getElementById("time_5");
+let time_6 = document.getElementById("time_6");
+let time_7 = document.getElementById("time_7");
+let time_8 = document.getElementById("time_8");
+
 
 let im_1=document.getElementById("im_1")
 let im_2=document.getElementById("im_2")
@@ -83,6 +101,7 @@ function one_time() {
   onetime = 1;
 }
 
+// Convert date into day function
 function date_to_day(v) {
   return new Date(v).toLocaleDateString("en-US", { weekday: "short" });
 }
@@ -120,7 +139,7 @@ function curr_weather_dis(data, name, country) {
 }
 
 
-
+// Forecast Image Function
 function forecast_img(value){
 
  if (value < 2) {
@@ -192,6 +211,29 @@ im_7.src=img7;
 
 }
 
+function hr_forecast_dis(data){
+  let {hourly_units:{temperature_2m:unit},hourly:{time,temperature_2m:[t1,t2,t3,t4,t5,t6,t7,t8]}}=data;
+  // Hourly Temperature
+  hr1.textContent= Math.floor(t1)+unit;
+  hr2.textContent= Math.floor(t2)+unit;
+  hr3.textContent= Math.floor(t3)+unit;
+  hr4.textContent= Math.floor(t4)+unit;
+  hr5.textContent= Math.floor(t5)+unit;
+  hr6.textContent= Math.floor(t6)+unit;
+  hr7.textContent= Math.floor(t7)+unit;
+  hr8.textContent= Math.floor(t8)+unit;
+
+  // Hourly Time
+  time_1.textContent=time[0].split("T")[1]; 
+  time_2.textContent=time[1].split("T")[1];
+  time_3.textContent=time[2].split("T")[1]; 
+  time_4.textContent=time[3].split("T")[1];
+  time_5.textContent=time[4].split("T")[1]; 
+  time_6.textContent=time[5].split("T")[1];
+  time_7.textContent=time[6].split("T")[1]; 
+  time_8.textContent=time[7].split("T")[1]; 
+}
+
 // Display Update Function
 function up_display(data, name, country) {
   if (onetime == 0) {
@@ -199,6 +241,7 @@ function up_display(data, name, country) {
   }
   curr_weather_dis(data, name, country);
   forecast_dis(data);
+  hr_forecast_dis(data);
 }
 
 btn.addEventListener("click", () => {

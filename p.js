@@ -12,10 +12,8 @@ async function weather(city) {
 &daily=weathercode`
     );
     let data = await response.json();
-    // console.log(data)
-    let {current:{time}}=data;
-    let a=time.split("T");
-    console.log(a)
+    let {hourly:{time}}=data;
+    console.log(time[2])
   } catch (e) {
     if (e.message.includes("Cannot read properties of undefined")) {
       console.log("No Found");
