@@ -53,6 +53,14 @@ let time_6 = document.getElementById("time_6");
 let time_7 = document.getElementById("time_7");
 let time_8 = document.getElementById("time_8");
 
+let i1= document.getElementById("i1")
+let i2= document.getElementById("i2")
+let i3= document.getElementById("i3")
+let i4= document.getElementById("i4")
+let i5= document.getElementById("i5")
+let i6= document.getElementById("i6")
+let i7= document.getElementById("i7")
+let i8= document.getElementById("i8")
 
 let im_1=document.getElementById("im_1")
 let im_2=document.getElementById("im_2")
@@ -148,6 +156,10 @@ function forecast_img(value){
     return "assets/images/icon-partly-cloudy.webp";
 } else if (value < 5) {
     return "assets/images/icon-overcast.webp";
+} else if(value < 49){
+    return "assets/images/icon-drizzle.webp"
+} else if(value < 58){
+    return "assets/images/icon-fog.webp"
 } else if (value < 66) {
     return "assets/images/icon-rain.webp";
 } else if (value < 76) {
@@ -212,7 +224,7 @@ im_7.src=img7;
 }
 
 function hr_forecast_dis(data){
-  let {hourly_units:{temperature_2m:unit},hourly:{time,temperature_2m:[t1,t2,t3,t4,t5,t6,t7,t8]}}=data;
+  let {hourly_units:{temperature_2m:unit},hourly:{time,temperature_2m:[t1,t2,t3,t4,t5,t6,t7,t8],weathercode:wc}}=data;
   // Hourly Temperature
   hr1.textContent= Math.floor(t1)+unit;
   hr2.textContent= Math.floor(t2)+unit;
@@ -232,6 +244,18 @@ function hr_forecast_dis(data){
   time_6.textContent=time[5].split("T")[1];
   time_7.textContent=time[6].split("T")[1]; 
   time_8.textContent=time[7].split("T")[1]; 
+
+  let arr=[wc[0],wc[1],wc[2],wc[3],wc[4],wc[5],wc[6],wc[7]].map((n)=> forecast_img(n));
+  let [img1,img2,img3,img4,img5,img6,img7,img8]=arr;
+  i1.src=img1;
+  i2.src=img2;
+  i3.src=img3;
+  i4.src=img4;
+  i5.src=img5;
+  i6.src=img6;
+  i7.src=img7;
+  i8.src=img8;
+
 }
 
 // Display Update Function
