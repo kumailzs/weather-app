@@ -53,32 +53,67 @@ let time_6 = document.getElementById("time_6");
 let time_7 = document.getElementById("time_7");
 let time_8 = document.getElementById("time_8");
 
-let i1= document.getElementById("i1")
-let i2= document.getElementById("i2")
-let i3= document.getElementById("i3")
-let i4= document.getElementById("i4")
-let i5= document.getElementById("i5")
-let i6= document.getElementById("i6")
-let i7= document.getElementById("i7")
-let i8= document.getElementById("i8")
+let i1= document.getElementById("i1");
+let i2= document.getElementById("i2");
+let i3= document.getElementById("i3");
+let i4= document.getElementById("i4");
+let i5= document.getElementById("i5");
+let i6= document.getElementById("i6");
+let i7= document.getElementById("i7");
+let i8= document.getElementById("i8");
 
-let im_1=document.getElementById("im_1")
-let im_2=document.getElementById("im_2")
-let im_3=document.getElementById("im_3")
-let im_4=document.getElementById("im_4")
-let im_5=document.getElementById("im_5")
-let im_6=document.getElementById("im_6")
-let im_7=document.getElementById("im_7")
+let im_1=document.getElementById("im_1");
+let im_2=document.getElementById("im_2");
+let im_3=document.getElementById("im_3");
+let im_4=document.getElementById("im_4");
+let im_5=document.getElementById("im_5");
+let im_6=document.getElementById("im_6");
+let im_7=document.getElementById("im_7");
 
+let main = document.getElementById("main");
+let hero = document.getElementById("hero");
+let navbar = document.getElementById("navbar");
+
+let e_btn;
+let one = 0;
+let one_t = 0;
 let onetime = 0;
 
 
+function notfound(){
+  main.style.display="none";
+  if(one==0){
+    hero.insertAdjacentHTML("afterend",`<h2 id="nt_h">No Search result found!</h2>`)
+    let nt_h =document.getElementById("nt_h");
+    one=1;
+  }
+  nt_h.style.margin="25px 0px";
+  nt_h.style.textAlign="center"
+}
+function fetch_error() {
+    main.style.display="none";
+    hero.style.display="none";
+    if(one_t==0){
+      console.log("hello");
+      navbar.insertAdjacentHTML("afterend",`<div id="error"></div>`);
+      let error_hed = document.getElementById("error");
+      error_hed.style.display="flex";
+      error_hed.style.flexDirection="column";
+      error_hed.style.alignItems="center";
+      error_hed.insertAdjacentHTML("afterbegin",`<button id="e_btn"> <img src="assets/images/icon-retry.svg"> Retry</btn>`)
+      error_hed.insertAdjacentHTML("afterbegin",`<p>We couldn't connect to the server (API error). Please again in a few moments.</p>`)
+      error_hed.insertAdjacentHTML("afterbegin",`<h1>Something went wrong</h1>`)
+      error_hed.insertAdjacentHTML("afterbegin",`<img width="30" src="assets/images/icon-error.svg">`)
+      e_btn= document.getElementById("e_btn");
+      one_t=1;
+    }
+}
 
 // Weather Data Fetch
 async function weather(city) {
   try {
     let p = await fetch(
-      `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
+      `https://geocoding-api.open-meteo.com/v/search?name=${city}`
     );
     let resp = await p.json();
     let {
@@ -92,9 +127,11 @@ async function weather(city) {
     up_display(data, name, country);
   } catch (e) {
     if (e.message.includes("Cannot read properties of undefined") || e.message.includes("Cannot destructure property 'Symbol(Symbol.iterator)")) {
-      console.log("No Found");
+      notfound();
+
     } else {
       console.log("Fetch Api Failed");
+      fetch_error();
     }
   }
 }
@@ -284,6 +321,12 @@ inp.addEventListener("keypress", () => {
     return;
   }
 });
+
+e_btn.addEventListener("click",()=>{
+   error_hed.style.display="none";
+   main.style.display="flex";
+    hero.style.display="flex";
+})
 
 // function sugges(){
 //     if(onetime == 0){
