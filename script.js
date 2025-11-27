@@ -75,6 +75,7 @@ let hero = document.getElementById("hero");
 let navbar = document.getElementById("navbar");
 
 let e_btn;
+let error_hed;
 let one = 0;
 let one_t = 0;
 let onetime = 0;
@@ -96,7 +97,7 @@ function fetch_error() {
     if(one_t==0){
       console.log("hello");
       navbar.insertAdjacentHTML("afterend",`<div id="error"></div>`);
-      let error_hed = document.getElementById("error");
+      error_hed = document.getElementById("error");
       error_hed.style.display="flex";
       error_hed.style.flexDirection="column";
       error_hed.style.alignItems="center";
@@ -107,13 +108,19 @@ function fetch_error() {
       e_btn= document.getElementById("e_btn");
       one_t=1;
     }
+        e_btn.addEventListener("click",()=>{
+   error_hed.style.display="none";
+   main.style.display="grid";
+    hero.style.display="flex";
+});
+
 }
 
 // Weather Data Fetch
 async function weather(city) {
   try {
     let p = await fetch(
-      `https://geocoding-api.open-meteo.com/v/search?name=${city}`
+      `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     );
     let resp = await p.json();
     let {
@@ -322,11 +329,9 @@ inp.addEventListener("keypress", () => {
   }
 });
 
-e_btn.addEventListener("click",()=>{
-   error_hed.style.display="none";
-   main.style.display="flex";
-    hero.style.display="flex";
-})
+
+
+
 
 // function sugges(){
 //     if(onetime == 0){
