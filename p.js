@@ -12,9 +12,7 @@ async function weather(city) {
 &daily=weathercode`
     );
     let data = await response.json();
-    let {hourly:{weathercode:[c1,c2,c3,c4,c5,c6,c7,...c8]}}=data;
-    console.log(weathercode)
-    console.log(c1)
+    console.log(data)
   } catch (e) {
     if (e.message.includes("Cannot read properties of undefined")) {
       console.log("No Found");

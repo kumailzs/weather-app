@@ -11,9 +11,17 @@
   <!-- Nav Bar -->
   <nav id="navbar">
     <img width="180" src="assets/images/logo.svg" alt="">
-    <select name="switch id="switch">
-      <option value="Celsius" selected>Celsius (C)</option>
+    <select name="switch" id="swt">
+      <option disabled selected >Units</option>
+      <optgroup label="Temperature">
+      <option value="Celsius">Celsius (C)</option>
       <option value="Fahrenheit">Fahrenheit (F)</option>
+      <optgroup label="Wind Speed">
+        <option value="km/h">km/h</option>
+        <option value="mph">mph</option>
+        <optgroup label="Percipation">
+           <option value="Millimeters">Millimeters (mm)</option>
+      <option value="Inches">Inches (in)</option>
     </select>
   </nav>
 

@@ -1,5 +1,7 @@
 // DOM Selection
+let data;
 
+let curr_temp;
 let feel = document.getElementById("feel");
 let humidity = document.getElementById("humidity");
 let wind = document.getElementById("wind");
@@ -73,6 +75,7 @@ let im_7=document.getElementById("im_7");
 let main = document.getElementById("main");
 let hero = document.getElementById("hero");
 let navbar = document.getElementById("navbar");
+let swt = document.getElementById("swt");
 
 let nt_h;
 let e_btn;
@@ -131,7 +134,7 @@ async function weather(city) {
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${log}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,wind_speed_10m&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto&hourly=weathercode
 &daily=weathercode`
     );
-    let data = await response.json();
+    data = await response.json();
     err=undefined;
     up_display(data, name, country);
   } catch (e) {
@@ -164,7 +167,7 @@ function date_to_day(v) {
 function curr_weather_dis(data, name, country) {
   let city_name = document.getElementById("city");
   let curr_day = document.getElementById("curr_day");
-  let curr_temp = document.getElementById("curr_temp");
+  curr_temp = document.getElementById("curr_temp");
   let {
     current: {
       temperature_2m: temp,
@@ -315,6 +318,7 @@ function up_display(data, name, country) {
   hr_forecast_dis(data);
 }
 
+
 btn.addEventListener("click", async () => {
   if (inp.value == "") {
     return;
@@ -345,6 +349,33 @@ inp.addEventListener("keypress", () => {
     return;
   }
 });
+
+
+
+swt.addEventListener("click",()=>{
+  let {current:{temperature_2m:tempi,wind_speed_10m:winds,precipitation:prep}}=data;
+  if(swt.value == "Celsius"){
+    curr_temp.textContent=Math.floor(tempi)+" °C";
+  }
+  else if(swt.value == "Fahrenheit"){
+    curr_temp.textContent=Math.floor((tempi*1.8)+32)+" °F";
+  }
+  else if(swt.value == "km/h"){
+    wind.textContent=Math.floor(winds) + " km/h";
+  }
+  else if(swt.value == "mph"){
+    wind.textContent=Math.floor((winds*1000))+" mph";
+  }
+  else if(swt.value == "Millimeters"){
+    pret.textContent=Math.round(prep) + "mm";
+  }
+  else if(swt.value == "Inches"){
+    pret.textContent=(prep/25.4)+" in";
+  }
+})
+
+
+
 
 
 
