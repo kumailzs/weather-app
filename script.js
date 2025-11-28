@@ -74,6 +74,7 @@ let main = document.getElementById("main");
 let hero = document.getElementById("hero");
 let navbar = document.getElementById("navbar");
 
+let nt_h;
 let e_btn;
 let error_hed;
 let one = 0;
@@ -81,11 +82,13 @@ let one_t = 0;
 let onetime = 0;
 
 
+let err=0;
+
 function notfound(){
   main.style.display="none";
   if(one==0){
     hero.insertAdjacentHTML("afterend",`<h2 id="nt_h">No Search result found!</h2>`)
-    let nt_h =document.getElementById("nt_h");
+   nt_h =document.getElementById("nt_h");
     one=1;
   }
   nt_h.style.margin="25px 0px";
@@ -109,9 +112,7 @@ function fetch_error() {
       one_t=1;
     }
         e_btn.addEventListener("click",()=>{
-   error_hed.style.display="none";
-   main.style.display="grid";
-    hero.style.display="flex";
+          window.location.reload();
 });
 
 }
@@ -131,10 +132,12 @@ async function weather(city) {
 &daily=weathercode`
     );
     let data = await response.json();
+    err=undefined;
     up_display(data, name, country);
   } catch (e) {
     if (e.message.includes("Cannot read properties of undefined") || e.message.includes("Cannot destructure property 'Symbol(Symbol.iterator)")) {
       notfound();
+      err=e;
 
     } else {
       console.log("Fetch Api Failed");
@@ -312,11 +315,18 @@ function up_display(data, name, country) {
   hr_forecast_dis(data);
 }
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", async () => {
   if (inp.value == "") {
     return;
   }
-  weather(inp.value);
+  await weather(inp.value);
+  if(err==undefined){
+  main.style.display="grid";
+  nt_h.style.display="none"
+  }
+   if (err.message.includes("Cannot read properties of undefined") || err.message.includes("Cannot destructure property 'Symbol(Symbol.iterator)")) {
+  nt_h.style.display="block"; 
+    } 
 });
 inp.addEventListener("keypress", () => {
   if (inp.value == "") {
@@ -324,6 +334,13 @@ inp.addEventListener("keypress", () => {
   }
   if (event.key == "Enter") {
     weather(inp.value);
+   if(err==undefined){
+  main.style.display="grid";
+  nt_h.style.display="none"
+   if (err.message.includes("Cannot read properties of undefined") || err.message.includes("Cannot destructure property 'Symbol(Symbol.iterator)")) {
+  nt_h.style.display="block"; 
+    } 
+  }
   } else {
     return;
   }
