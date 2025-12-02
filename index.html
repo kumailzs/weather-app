@@ -11,6 +11,8 @@
   <!-- Nav Bar -->
   <nav id="navbar">
     <img width="180" src="assets/images/logo.svg" alt="">
+    <div class="swtbox">
+      <img src="assets/images/icon-units.svg" alt="">
     <select name="switch" id="swt">
       <option disabled selected >Units</option>
       <optgroup label="Temperature">
@@ -23,13 +25,15 @@
            <option value="Millimeters">Millimeters (mm)</option>
       <option value="Inches">Inches (in)</option>
     </select>
+    </div>
   </nav>
 
   <!-- Hero Sectiion -->
   <section id="hero">
     <h1>How's the sky looking today?</h1>
      <div id="inpt_sec">
-      <input type="text" name="text" id="input" list="suggestions">
+      <img src="assets/images/icon-search.svg" alt="">
+      <input type="text" name="text" id="input" list="suggestions" placeholder="Search for a place...">
       <datalist id="suggestions">
       <option value="Karachi">Karachi</option>
       <option value="Berlin">Berlin</option>

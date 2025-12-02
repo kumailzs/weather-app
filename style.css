@@ -21,20 +21,81 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+.swtbox{
+    position: relative;
+}
+.swtbox img {
+    position: absolute;
+        position: absolute;
+    top: 13px;
+    left: 12px;
+}
+#swt{
+    color: white;
+    font-weight: 500;
+    background-color: #25253F;
+    width: 119px;
+    height: 44px;
+    border: none;
+    border-radius: 9px;
+    text-align: center;
+    font-size: 14px;
+}
+#swt option{
+    font-size: 14px;
+    font-weight: 500;
+}
+#swt optgroup{
+    font-size: 14px;
+    font-weight: bold;
+}
 #hero{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     width: 100vw;
-    height: 115px;
+    height: 182px;
     padding: 12px;
     box-sizing: border-box;
+}
+#hero h1{
+    font-size:39px;
+    font-weight: 600;
 }
 #inpt_sec{
     display: flex;
     margin-top: 28px;
+    position: relative;
 }
+#inpt_sec img{
+    position: absolute;
+    top: 14px;
+    left: 17px;
+}
+#input{
+    background-color: #25253F;
+    border: none;
+    padding: 10px 28px 10px 45px;
+    width: 422px;
+    height: 28px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius:10px ;
+}
+
+#btn{
+    width: 97px;
+    height: 46px;
+    font-size: 15.5px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    background-color: #4657D9;
+    border-radius: 10px;
+    margin: 0px 15px;
+}
+
 
 main{
     border: 2px solid red;
@@ -48,15 +109,16 @@ main{
 
 
 .status{
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0px  20px;
     height: 210px;
-    border: 2px solid white;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    background-color: #25253F;
 }
 .extra{
     display: grid;
@@ -65,12 +127,13 @@ main{
     margin: 20px 0px;
 }
 .extra_info{
-    border: 2px solid white;
+    border-radius: 11px;
     height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 10px;
+    background-color: #25253F;
 }
 
 
@@ -83,12 +146,14 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 13px;
     padding: 10px;
-    height: 120px;
+    height: 140px;
     justify-content: space-around;
-    border: 2px solid red;
     box-sizing: border-box;
     margin-top: 10px;
+    background-color: #25253F;
+
 }
 .min_max{
     display: flex;
@@ -102,7 +167,6 @@ main{
     width: 100%;
     height: 100%;
     flex-direction: column;
-    border: 2px solid rgb(136, 255, 0);
     box-sizing: border-box;
     padding: 10px;
 }
@@ -115,8 +179,10 @@ main{
     display: flex;
     justify-content: space-between;
     height: 50px;
-    border: 2px solid yellow;
     align-items: center;
+    border-radius: 8px;
+    background-color: #25253F;
+
 }
 #head{
 display: flex;
