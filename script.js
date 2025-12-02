@@ -120,16 +120,38 @@ function fetch_error() {
 
 }
 
-// Weather Data Fetch
-async function weather(city) {
-  try {
-    let p = await fetch(
+async function coordinate(city,v1,v2){
+  if(city != undefined){
+     let p = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     );
     let resp = await p.json();
-    let {
+     let {
       results: [{ latitude: lat, longitude: log, name, country }],
     } = resp;
+    let obj={
+      lat,log,name,country
+    }
+    return obj;
+  }
+  else{
+    let p = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${v1}&longitude=${v2}&localityLanguage=en`);
+   let resp = await p.json();
+    let {latitude:lat,longitude:log,city:name,countryName:country}=resp;
+   let obj={
+     lat,log,name,country
+   }
+   return obj;
+
+  }
+ 
+}
+
+// Weather Data Fetch
+async function weather(city,value1,value2) {
+  try {
+    let resp = await coordinate(city,value1,value2);
+    let {lat,log,country,name}= resp;
     let response = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${log}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,wind_speed_10m&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto&hourly=weathercode
 &daily=weathercode`
@@ -349,6 +371,19 @@ inp.addEventListener("keypress", () => {
     return;
   }
 });
+
+
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition((position)=>{
+      let lat = position.coords.latitude;
+      let log = position.coords.longitude;
+    weather(undefined, lat,log)
+  },
+   (error) => {
+    console.log("User denied or error:", error.message);
+  }
+)
+}
 
 
 
