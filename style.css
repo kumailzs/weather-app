@@ -55,7 +55,7 @@ body{
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 182px;
+    height: 220px;
     padding: 12px;
     box-sizing: border-box;
 }
@@ -99,23 +99,25 @@ body{
 
 
 main{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 92vw;
     margin: 0px auto;
     /* height: 500px;  */
     display: grid;
+    column-gap: 28px;
+
     grid-template-columns: 2fr 1fr;
 }
 
 
 
 .status{
-    border-radius: 20px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0px  20px;
-    height: 210px;
+    height: 255px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -165,11 +167,17 @@ main{
  
 .container{
     display: flex;
+    background-color: #25253F;
     width: 100%;
     height: 100%;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 10px;border-radius: 15px;
+    padding: 23px 22px;
+}
+#head h3{
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 .boxes{
     display: flex;
@@ -182,7 +190,8 @@ main{
     height: 50px;
     align-items: center;
     border-radius: 8px;
-    background-color: #25253F;
+    background-color: #2F2F49;
+    border: 1px solid #343434;
 
 }
 #head{
