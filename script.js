@@ -174,9 +174,12 @@ async function weather(city,value1,value2) {
 function one_time() {
   info.insertAdjacentHTML("afterbegin", '<h3 id="city"></h3>');
   info.insertAdjacentHTML("beforeend", '<h5 id="curr_day"></h5>');
+  sta.insertAdjacentHTML("beforeend", '<img id="curr-img">');
   sta.insertAdjacentHTML("beforeend", '<h1 id="curr_temp"></h1>');
   sta.style.background = "url(assets/images/bg-today-large.svg)";
+  sta.style.backgroundSize="cover";
   sta.style.justifyContent = "space-between";
+  sta.style.background
   load.hidden = "true";
   onetime = 1;
 }
@@ -189,6 +192,7 @@ function date_to_day(v) {
 function curr_weather_dis(data, name, country) {
   let city_name = document.getElementById("city");
   let curr_day = document.getElementById("curr_day");
+  let curr_img = document.getElementById("curr_img");
   curr_temp = document.getElementById("curr_temp");
   let {
     current: {
@@ -216,6 +220,7 @@ function curr_weather_dis(data, name, country) {
   pret.textContent = prec + prec_u;
   city_name.textContent = `${name}, ${country}`;
   curr_day.textContent = `${date_to_day(time.split("T")[0])}, ${time.split("T")[0]}`
+  
 }
 
 
