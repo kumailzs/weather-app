@@ -98,10 +98,9 @@ function notfound(){
   nt_h.style.textAlign="center"
 }
 function fetch_error() {
-    main.style.display="none";
-    hero.style.display="none";
-    nt_h.style.display="none";
-    if(one_t==0){
+  main.style.display="none";
+  hero.style.display="none";
+  if(one_t==0){
       console.log("hello");
       navbar.insertAdjacentHTML("afterend",`<div id="error"></div>`);
       error_hed = document.getElementById("error");
@@ -111,7 +110,7 @@ function fetch_error() {
       error_hed.insertAdjacentHTML("afterbegin",`<button id="e_btn"> <img src="assets/images/icon-retry.svg"> Retry</btn>`)
       error_hed.insertAdjacentHTML("afterbegin",`<p>We couldn't connect to the server (API error). Please again in a few moments.</p>`)
       error_hed.insertAdjacentHTML("afterbegin",`<h1>Something went wrong</h1>`)
-      error_hed.insertAdjacentHTML("afterbegin",`<img width="30" src="assets/images/icon-error.svg">`)
+      error_hed.insertAdjacentHTML("afterbegin",`<img width="30" src="assets/images/icon-error.svg" alt="" srcset="">`)
       e_btn= document.getElementById("e_btn");
       one_t=1;
     }

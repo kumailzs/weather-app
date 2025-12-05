@@ -49,6 +49,34 @@ body{
     font-size: 14px;
     font-weight: bold;
 }
+
+#error{
+margin-top: 85px;
+}
+#error h1{
+    font-weight: 600;
+    font-size: 39px;
+}
+#error p{
+margin:10px 0px;
+font-size: 13px;
+    font-weight: 300;
+    width: 28vw;
+    text-align: center;
+}
+#e_btn{
+background: #25253F;
+    color: white;
+    border: none;
+    padding: 11px 29px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    border-radius: 10px;
+
+}
+
 #hero{
     display: flex;
     flex-direction: column;

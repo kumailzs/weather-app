@@ -6,21 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+	<div id="body"></div>
     <script>
-   fetch("https://api.apispreadsheets.com/data/tMUQ76Kjzr7pJzxU/", {
-	method: "POST",
-	headers: {"accessKey":"e21134c8b160248f96ce7371f84c4c54", "secretKey":"2a686d924e2befd85a0f04c970b1e3c2"},
-	body: JSON.stringify({"data": {"lat":"hello","lon":"hel","timestamp":"v"}}),
-}).then(res =>{
-	if (res.status === 201){
-		// SUCCESS
-    console.log("goof")
-	}
-	else{
-		// ERROR
-	}
-})
-
+		let body = document.getElementById("body")
+		body.insertAdjacentHTML("afterbegin",`<img src="assets/images/icon-error.svg" alt="" srcset="">`)
 </script>
+
 </body>
 </html>
