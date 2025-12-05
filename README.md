@@ -74,7 +74,9 @@ Check it out here: [Open Weather Live Demo](https://openweather-web.netlify.app/
 
 ```bash
 git clone https://github.com/kumailzs/weather-app
-cd weather-app```
+cd weather-app
+```
+
 
 Open index.html in your browser.
 
