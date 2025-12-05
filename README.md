@@ -77,19 +77,16 @@ git clone https://github.com/kumailzs/weather-app
 cd weather-app
 ```
 
-
 Open index.html in your browser.
 
+---
+
+## **🖼️ Screenshot / Preview**
+
+(Add your screenshot or GIF preview in the project folder.)
 
 ---
 
-🖼️ Screenshot / Preview
-
-<p align="center">
-  <img src="./screenshot.png" alt="Weather App Screenshot" width="600"/>
-</p>> (Add your screenshot or GIF preview in the project folder. Update the path if needed.)
-
-
----
-## **📦 Installation**
-
+## **📄 License**
+This project is open-source and free for everyone.
+MIT License
