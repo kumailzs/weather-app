@@ -88,9 +88,10 @@ Open index.html in your browser.
 </p>> (Add your screenshot or GIF preview in the project folder. Update the path if needed.)
 
 
-
-
 ---
+
+
+
 
 🔮 Future Enhancements
 
