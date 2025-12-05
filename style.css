@@ -97,6 +97,9 @@ body{
     margin: 0px 15px;
 }
 
+#nt_h{
+    font-weight: 600;
+}
 
 main{
     /* border: 2px solid red; */
@@ -117,7 +120,7 @@ main{
     align-items: center;
     justify-content: center;
     padding: 0px  20px;
-    height: 255px;
+    height: 298px;
     background-color: #25253F;
 }
 #curr_temp{
@@ -125,13 +128,13 @@ font-size: 68px;
  font-weight: 500;
 }
 #city{
-font-size: 24px;
+font-size: 26px;
     font-weight: 600;
 }
 #curr_day{
-	font-size: 14px;
+	font-size: 14.5px;
     font-weight: 400;
-    margin-top: 5px;
+    margin-top: 7px;
 }
 #load h4{
     font-weight: 400;
@@ -145,7 +148,7 @@ font-size: 24px;
 }
 .extra_info{
     border-radius: 11px;
-    height: 90px;
+    height: 103px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -258,14 +261,34 @@ font-size: 24px;
     border-radius: 8px;
     background-color: #2F2F49;
     border: 1px solid #343434;
+    padding: 4px 11px;
 
 }
+#time_1{font-size: 18px; font-weight: 400;}
+#time_2{font-size: 18px; font-weight: 400;}
+#time_3{font-size: 18px; font-weight: 400;}
+#time_4{font-size: 18px; font-weight: 400;}
+#time_5{font-size: 18px; font-weight: 400;}
+#time_6{font-size: 18px; font-weight: 400;}
+#time_7{font-size: 18px; font-weight: 400;}
+#time_8{font-size: 18px; font-weight: 400;}
+
+#hr1{font-size: 17px; font-weight: 400;}
+#hr2{font-size: 17px; font-weight: 400;}
+#hr3{font-size: 17px; font-weight: 400;}
+#hr4{font-size: 17px; font-weight: 400;}
+#hr5{font-size: 17px; font-weight: 400;}
+#hr6{font-size: 17px; font-weight: 400;}
+#hr7{font-size: 17px; font-weight: 400;}
+#hr8{font-size: 17px; font-weight: 400;}
+
 #head{
 display: flex;
 justify-content: space-between;
 }
 #img_box{
     display: flex;
+    align-items: center;
 }
 
 
