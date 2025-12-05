@@ -89,3 +89,5 @@ Open index.html in your browser.
 
 
 ---
+## **📦 Installation**
+
