@@ -28,8 +28,7 @@ The app supports **multiple units**, **automatic location detection**, and a **c
 - **7-Day Forecast**  
 - **Hourly Forecast**  
 - **Search Any City**  
-- **Automatic Location Detection** (Geolocation API)  
-- **Reverse Geocoding** to convert coordinates into readable address  
+- **Automatic Location Detection** (Geolocation API)   
 - **Multi-Unit Support:**  
   - Celsius ↔ Fahrenheit  
   - km/h ↔ mph  
@@ -52,21 +51,19 @@ Check it out here: [Open Weather Live Demo](https://openweather-web.netlify.app/
 - JavaScript (Vanilla JS)  
 - OpenWeather API / Meteo API  
 - Geolocation API  
-- Reverse Geocoding API
 
 ---
 
 ## **📍 How It Works**
 
-1. User clicks **"Use My Location"**  
-2. Browser requests permission  
+1. User enter website  
+2. Browser request permission  
 3. The app fetches **latitude & longitude**  
 4. Weather APIs return:  
    - Current conditions  
    - Hourly forecast  
-   - 7-day forecast  
-5. Reverse geocoding converts coordinates into a **location name**  
-6. User can toggle units (**°C/°F, km/h/mph, mm/inches**)
+   - 7-day forecast    
+5. User can toggle units (**°C/°F, km/h/mph, mm/inches**)
 
 ---
 
@@ -89,4 +86,3 @@ Open index.html in your browser.
 
 ## **📄 License**
 This project is open-source and free for everyone.
-MIT License
