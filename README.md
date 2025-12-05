@@ -49,7 +49,7 @@ Check it out here: [Open Weather Live Demo](https://openweather-web.netlify.app/
 - HTML  
 - CSS  
 - JavaScript (Vanilla JS)  
-- OpenWeather API / Meteo API  
+- Weather Api (Open Meteo)  
 - Geolocation API  
 
 ---
