@@ -80,7 +80,7 @@ Open index.html in your browser.
 
 ## **🖼️ Screenshot / Preview**
 
-(Add your screenshot or GIF preview in the project folder.)
+Screenshot 
 
 ---
 
